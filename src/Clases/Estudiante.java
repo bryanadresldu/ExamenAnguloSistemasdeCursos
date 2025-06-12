@@ -5,6 +5,7 @@ import com.sun.security.jgss.GSSUtil;
 public class Estudiante extends Persona {
 
     int edad;
+    boolean certificado;
     public Estudiante(String nombre, String cedula, int edad) {
         super(nombre, cedula);
         this.edad=edad;
@@ -15,9 +16,10 @@ public class Estudiante extends Persona {
         setCurso(curso);
     }
 
-    public Estudiante(String nombre, String cedula,int edad, Cursos curso) {
+    public Estudiante(String nombre, String cedula,int edad, Cursos curso, boolean certificado) {
         super(nombre, cedula, curso);
         this.edad=edad;
+        this.certificado=certificado;
 
     }
 
@@ -37,5 +39,13 @@ public class Estudiante extends Persona {
         System.out.println("Curso: "+getCurso());
 
 
+    }
+
+    public boolean isCertificado() {
+        return certificado;
+    }
+
+    public void setCertificado(boolean certificado) {
+        this.certificado = certificado;
     }
 }

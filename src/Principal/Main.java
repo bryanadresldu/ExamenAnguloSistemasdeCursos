@@ -1,8 +1,6 @@
 package Principal;
 
-import Clases.Cursos;
-import Clases.Docente;
-import Clases.Estudiante;
+import Clases.*;
 import org.w3c.dom.ls.LSOutput;
 
 import java.util.ArrayList;
@@ -49,9 +47,9 @@ public class Main {
         cedulaE=leer.nextLine();
         System.out.println("Ingrese su edad: ");
         edadE=leer.nextInt();
+        leer.nextLine();
 
-
-        Estudiante e1=new Estudiante(nombreE,cedulaE,edadE,null);
+        Estudiante e1=new Estudiante(nombreE,cedulaE,edadE,null,false);
         estudiantes.add(e1);
 
         String opcion="";
@@ -110,14 +108,20 @@ public class Main {
 
                     System.out.println("Desea certificado:  si/no");
                     boolean certificado;
-                    String opinion;
-                    opinion=leer.nextLine();
-                    switch (opcionCurso){
+                    String opinionCurso;
+                    opinionCurso=leer.nextLine();
+                    switch (opinionCurso){
                         case "Si","si","SI":
                             certificado=true;
+                            e1.setCertificado(certificado);
+                            CursoCertificado cursoEstudianteCertificado=new CursoCertificado(e1.getCurso().getId(),e1.getCurso().getNombre(),e1.getCurso().getPrecio(), e1.getCurso().getDuracion());
+
                             break;
                         case "No","no","NO":
                             certificado=false;
+                            e1.setCertificado(certificado);
+                            CursoRegular cursoEstudianteRegular=new CursoRegular(e1.getCurso().getId(),e1.getCurso().getNombre(),e1.getCurso().getPrecio(), e1.getCurso().getDuracion());
+
                             break;
                         default:
                         System.out.println(" opcion no valida");
